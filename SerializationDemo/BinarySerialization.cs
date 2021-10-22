@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+
+namespace SerializationDemo
+{
+    class BinarySerialization
+    {
+        public void Serialization()
+        {
+            Demo sample = new Demo();
+            FileStream fileStream = new FileStream(@"C:\Users\dell\source\repos\Day20_File_IO\SerializationDemo\Example.txt", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter(); 
+            formatter.Serialize(fileStream, sample);
+            Console.ReadKey();
+        }
+    }
+
+    [Serializable]
+    public class Demo
+    {
+        public string ApplicationName { get; set; } = "Binary Serialize";
+        public int ApplicationId { get; set; } = 1001;
+    }
+
+
+
+}
